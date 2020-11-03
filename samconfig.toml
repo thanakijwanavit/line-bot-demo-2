@@ -1,0 +1,9 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "line-bot-demo-2-us"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-23wiswt5x75z"
+s3_prefix = "line-bot-demo-2-us"
+region = "us-east-1"
+capabilities = "CAPABILITY_IAM"

@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  line-bot-demo-2
+
+  Sample SAM Template for line-bot-demo-2
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  LineBot:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: linebot/
+      Handler: app.lineBot
+      Runtime: python3.8
+      Layers:
+        - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pymongo:4
+        - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-nltk:16
+        - arn:aws:lambda:us-east-1:277726656832:layer:corpus-layer:2
+        - arn:aws:lambda:us-east-1:277726656832:layer:chatterbot:1
+        - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-spacy:28
+      Policies:
+        - S3ReadPolicy:
+            BucketName: chatterbot-data
+      Events:
+        LineWebhook:
+          Properties:
+              Method: post
+              Path: /line
+          Type: Api
+      

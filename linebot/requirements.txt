@@ -1,0 +1,8 @@
+requests
+awsSchema
+line-bot-sdk
+s3bz
+pyyaml
+pytz
+pint
+mathparse
